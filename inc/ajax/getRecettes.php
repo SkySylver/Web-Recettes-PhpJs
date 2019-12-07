@@ -19,24 +19,18 @@ if(isset($_POST['cat'])){
 
 }
 
-// Traite le cas où l'utilisateur a cliqué sur le bouton Hierarchie
+/**
+* Traite le cas où l'utilisateur a cliqué sur le bouton Hierarchie
+*/
 function traiterHierarchie($Recettes){
   foreach ($Recettes as $r){
-      $newTitre = str_replace(' ', '_', $r['titre']) .'.jpg';
-      ?>
-      <div class="border border-primary rounded px-1 text-center offset-md-1 col-3 mr-auto">
-          <p class="h3"><?=$r['titre'];?></p>
-          <p class="p">Ingredients : <?=$r['ingredients']; ?></p>
-          <p>Preparation : <?=$r['preparation']; ?></p>
-          <?php if(file_exists('../img/Photos/'.$newTitre)) {
-            echo '<img src="inc/img/Photos/' .$newTitre .'"/>';
-          }?>
-      </div>
-      <?php
+      afficherCodeHTML($r);
   }
 }
 
-// Traite le cas où la recherche est une recette
+/**
+* Traite le cas où la recherche est une recette
+*/
 function traiterRecette($recette, $Recettes){
   foreach($Recettes as $r){
     if($r['titre']==$recette){
@@ -47,7 +41,9 @@ function traiterRecette($recette, $Recettes){
   return false;
 }
 
-// Renvoie les ingrédients d'une catégorie
+/**
+* Renvoie les ingrédients d'une catégorie
+*/
 function getIngredients($cat, $Hierarchie){
 	$res = array();
   //Si $cat n'est pas un tableau, alors c'est un ingrédient
@@ -61,7 +57,9 @@ function getIngredients($cat, $Hierarchie){
 	return $res;
 }
 
-// Traite le cas où la recherche est un ingrédient
+/**
+*  Traite le cas où la recherche est un ingrédient
+*/
 function traiterIngredients($ing, $Recettes){
   foreach($ing as $i){
       foreach ($Recettes as $r){
@@ -72,11 +70,13 @@ function traiterIngredients($ing, $Recettes){
   }
 }
 
-//Affiche le code HTML de présentation d'une recette
+/**
+* Affiche le code HTML de présentation d'une recette
+*/
 function afficherCodeHTML($r){
   $newTitre = str_replace(' ', '_', $r['titre']) .'.jpg';
   ?>
-  <div class="border border-primary rounded px-1 text-center col-3 ">
+  <div class="border border-primary rounded px-1 text-center offset-md-1 col-3 mr-auto">
       <p class="h3"><?=$r['titre'];?></p>
       <p class="p">Ingredients : <?=$r['ingredients']; ?></p>
       <p>Preparation : <?=$r['preparation']; ?></p>
