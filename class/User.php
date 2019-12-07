@@ -2,6 +2,7 @@
 namespace App;
 
 require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/class/Panier.php';
+use App\Panier;
 const DIR = 'users/';
 class User
 {
@@ -83,7 +84,7 @@ class User
     /**
      * @param mixed $password
      */
-    public function setPassword($password): void
+    public function setPassword($password)
     {
         $this->_password = $password;
     }
@@ -91,7 +92,7 @@ class User
     /**
      * @return string
      */
-    public function getSexe(): string
+    public function getSexe()
     {
         return $this->_sexe;
     }
@@ -99,7 +100,7 @@ class User
     /**
      * @param string $sexe
      */
-    public function setSexe(string $sexe): void
+    public function setSexe($sexe)
     {
         $this->_sexe = $sexe;
     }
@@ -107,7 +108,7 @@ class User
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->_name;
     }
@@ -115,7 +116,7 @@ class User
     /**
      * @param string $name
      */
-    public function setName(string $name): void
+    public function setName($name)
     {
         $this->_name = $name;
     }
@@ -123,7 +124,7 @@ class User
     /**
      * @return string
      */
-    public function getSurname(): string
+    public function getSurname()
     {
         return $this->_surname;
     }
@@ -131,7 +132,7 @@ class User
     /**
      * @param string $surname
      */
-    public function setSurname(string $surname): void
+    public function setSurname($surname)
     {
         $this->_surname = $surname;
     }
@@ -139,7 +140,7 @@ class User
     /**
      * @return string
      */
-    public function getMail(): string
+    public function getMail()
     {
         return $this->_mail;
     }
@@ -147,7 +148,7 @@ class User
     /**
      * @param string $mail
      */
-    public function setMail(string $mail): void
+    public function setMail(string $mail)
     {
         $this->_mail = $mail;
     }
@@ -155,7 +156,7 @@ class User
     /**
      * @return string
      */
-    public function getNaissance(): string
+    public function getNaissance()
     {
         return $this->_naissance;
     }
@@ -163,7 +164,7 @@ class User
     /**
      * @param string $naissance
      */
-    public function setNaissance(string $naissance): void
+    public function setNaissance($naissance)
     {
         $this->_naissance = $naissance;
     }
@@ -171,7 +172,7 @@ class User
     /**
      * @return string
      */
-    public function getTel(): string
+    public function getTel()
     {
         return $this->_tel;
     }
@@ -179,7 +180,7 @@ class User
     /**
      * @param string $tel
      */
-    public function setTel(string $tel): void
+    public function setTel($tel)
     {
         $this->_tel = $tel;
     }
@@ -187,7 +188,7 @@ class User
     /**
      * @return string
      */
-    public function getNumber(): string
+    public function getNumber()
     {
         return $this->_number;
     }
@@ -195,7 +196,7 @@ class User
     /**
      * @param string $number
      */
-    public function setNumber(string $number): void
+    public function setNumber($number)
     {
         $this->_number = $number;
     }
@@ -203,7 +204,7 @@ class User
     /**
      * @return string
      */
-    public function getStreet(): string
+    public function getStreet()
     {
         return $this->_street;
     }
@@ -211,7 +212,7 @@ class User
     /**
      * @param string $street
      */
-    public function setStreet(string $street): void
+    public function setStreet($street)
     {
         $this->_street = $street;
     }
@@ -219,7 +220,7 @@ class User
     /**
      * @return string
      */
-    public function getCity(): string
+    public function getCity()
     {
         return $this->_city;
     }
@@ -227,7 +228,7 @@ class User
     /**
      * @param string $city
      */
-    public function setCity(string $city): void
+    public function setCity($city)
     {
         $this->_city = $city;
     }
@@ -235,7 +236,7 @@ class User
     /**
      * @return string
      */
-    public function getCP(): string
+    public function getCP()
     {
         return $this->_CP;
     }
@@ -243,7 +244,7 @@ class User
     /**
      * @param string $CP
      */
-    public function setCP(string $CP): void
+    public function setCP($CP)
     {
         $this->_CP = $CP;
     }

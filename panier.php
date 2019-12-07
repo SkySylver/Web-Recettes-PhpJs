@@ -1,10 +1,10 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/class/User.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/class/Panier.php';
+use App\User;
+use App\Panier;
+use function App\isConnected;
 session_start();
-    use App\User;
-    use App\Panier;
-    use function App\isConnected;
 
     if(!isset($_SESSION['panier'])) $_SESSION['panier'] = new Panier();
 

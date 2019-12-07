@@ -24,12 +24,15 @@ class Panier
     function MajFile()
     {
         if (isConnected()) {
-            $json = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/Projet/panier/' . $_SESSION['user']->getLogin() . '.json');
-            $usrpan = json_decode($json, true);
+            $path = $_SERVER["DOCUMENT_ROOT"].'/Projet/panier/' . $_SESSION['user']->getLogin() . '.json';
+            if(file_exists($path)) {
 
-            $merged = array_merge($this->_panier, $usrpan);
-            $this->_panier =array_unique($merged);
+                $json = file_get_contents($path);
+                $usrpan = json_decode($json, true);
 
+                $merged = array_merge($this->_panier, $usrpan);
+                $this->_panier = array_unique($merged);
+            }
 
 
 

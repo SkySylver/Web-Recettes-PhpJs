@@ -1,9 +1,9 @@
-<?php session_start();
+<?php
 require $_SERVER["DOCUMENT_ROOT"].'/Projet/class/User.php';
 
 use App\User;
 use function App\isConnected;
-
+session_start();
 if (isConnected()) header('Location:home.php');
 
 

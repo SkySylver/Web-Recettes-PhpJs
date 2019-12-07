@@ -7,6 +7,7 @@ if(isset($_POST['submit'])){
     if(isset($_POST['login']) && isset($_POST['password'])) {
         if(\App\existUser($_POST['login'], $_POST['password'])){
             \App\User::_load($_POST['login']);
+
             Header('Location:home.php');
         }
         else $errors['login'] = 'Identifiant ou mot de passe invalide';
