@@ -9,9 +9,8 @@
     <script type="text/javascript" src="inc/js/home.js"></script>
 </head>
 <body>
-
+  
 <?php require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/nav.php'; ?>
-
 
 <div class="mr-4 row">
     <div id="Aliments" class="col-2">
@@ -25,10 +24,9 @@
         </div>
     </div>
     <div class="col-10">
-      <div class="row float-right">
+      <div class="float-right">
         <?php require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/barreDeRecherche.php'; ?>
       </div>
-      <br>
       <div class="row ml-auto">
         <div id="Recettes" class="container "></div>
       </div>
