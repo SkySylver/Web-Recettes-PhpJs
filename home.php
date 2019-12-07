@@ -20,7 +20,7 @@
             <ul id="Categories" class=""></ul>
             <h4 style="color:darkslategray">Recherche par tag:</h4>
             <?php require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/listesDeroulantes.php'; ?>
-            <button type="button" id="btn-rechercheParTag" class="btn btn-dark">Rechercher</button>
+            <button type="button" id="btn-rechercheParTag" class="btn btn-dark btn-rechercher">Rechercher</button>
         </div>
         <div id="Recettes" class="container">
         </div>
