@@ -63,7 +63,9 @@ function getIngredients($cat, $Hierarchie){
 	return $res;
 }
 
-// affiche la recette
+/**
+* Affiche la recette
+*/
 function afficherRecette($recette, $Recettes){
   foreach($Recettes as $r){
     if($r['titre']==$recette){
@@ -74,7 +76,10 @@ function afficherRecette($recette, $Recettes){
   return false;
 }
 
-//Affiche le code HTML de présentation d'une recette
+
+/**
+*Affiche le code HTML de présentation d'une recette
+*/
 function afficherCodeHTML($r){
   $newTitre = str_replace(' ', '_', $r['titre']) .'.jpg';
   ?>
