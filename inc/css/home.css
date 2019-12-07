@@ -63,15 +63,21 @@ p {
   font-size: 18px;
 }
 
-
-
+#suggestions{
+  z-index: 2;
+  color:dimgray;
+  font-size: 8px;
+  background-color: white;
+}
 
 .btn-rechercher{
-    width: 100px;
-    height: 32px;
-    text-align: center;
-    font-size: 18px;
-    padding:0px;
+  width: 102px;
+  height: 36px;
+  text-align: center;
+  font-size: 18px;
+  padding: 0px;
+  margin-right: 10px;
+  float: right;
 }
 
 .btn-secondary{
@@ -81,3 +87,4 @@ p {
     font-size: 16px;
     padding:0px;
 }
+
