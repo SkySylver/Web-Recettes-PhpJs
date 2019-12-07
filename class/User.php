@@ -11,45 +11,56 @@ class User
     private $_name='', $_surname='', $_mail='', $_naissance='', $_tel='', $_number='', $_street='', $_city='', $_CP='', $_sexe ='';
 
 
-    public function __construct($log, $pass){
-        $this->_login = $log;
-        $this->_password = password_hash($pass,PASSWORD_DEFAULT);
-    }
+    public function __construct(){
+
+        $cpt = func_num_args();
+        $args = func_get_args();
 
 
-    static public function _load($log)
-    {
-        $instance = new User($log, '1');
+        switch($cpt){
+            case '1':
+                $this->_login = $args[0];
+                $path = DIR . $args[0] . '.json';
+                if (file_exists($path)) {
+                    $json = file_get_contents($path);
+                    $data = json_decode($json,true);
 
-        $path = DIR . $log . '.json';
-        if (file_exists($path)) {
-            $json = file_get_contents($path);
-            $data = json_decode($json, true);
+                    $this->_password = password_hash($data['password'],PASSWORD_DEFAULT);
+                    $this->_name = $data['name'];
+                    $this->_surname = $data['surname'];
+                    $this->_mail = $data['mail'];
+                    $this->_naissance = $data['naissance'];
+                    $this->_tel = $data['tel'];
+                    $this->_number = $data['number'];
+                    $this->_street = $data['street'];
+                    $this->_city = $data['city'];
+                    $this->_CP = $data['CP'];
+                    $this->_sexe = $data['sexe'];
+                }
+                break;
 
-            $instance->_name= $data['name'];
-            $instance->_surname= $data['surname'];
-            $instance->_mail= $data['mail'];
-            $instance->_naissance= $data['naissance'];
-            $instance->_tel= $data['tel'];
-            $instance->_number= $data['number'];
-            $instance->_street= $data['street'];
-            $instance->_city= $data['city'];
-            $instance->_CP= $data['CP'];
-            $instance->_sexe = $data['sexe'];
-
-            $_SESSION['user'] = $instance;
+            case '2':
+                $this->_login = $args[0];
+                $this->_password = password_hash($args[1],PASSWORD_DEFAULT);
+                break;
         }
+
+
     }
 
 
-    function __destruct(){
+
+    function _destruct(){
         unset($_SESSION['user']);
+        echo 'deco';
     }
 
 
     function disconnect(){
-        $_SESSION['panier']->__destruct();
-        $this->__destruct();
+        echo 'disc';
+
+        if(isset($_SESSION['panier'])) unset($_SESSION['panier']);
+        $this->_destruct();
     }
 
     function register(){

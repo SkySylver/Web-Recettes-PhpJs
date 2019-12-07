@@ -20,9 +20,12 @@ session_start();
 <?php require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/nav.php'; ?>
 <body>
 
+<div id="panier">
+
 <?php
 $_SESSION['panier']->afficher(-1);
 ?>
+</div>
 
 <button onclick="AjouterPanier(0);">ffff</button>
 </body>

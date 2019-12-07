@@ -1,14 +1,16 @@
 <?php
 require $_SERVER["DOCUMENT_ROOT"].'/Projet/class/User.php';
+use App\User;
 session_start();
 if(\App\isConnected()) Header('Location:home.php');
 
 if(isset($_POST['submit'])){
     if(isset($_POST['login']) && isset($_POST['password'])) {
-        if(\App\existUser($_POST['login'], $_POST['password'])){
-            \App\User::_load($_POST['login']);
+        if(App\existUser($_POST['login'], $_POST['password'])){
+            $_SESSION['user'] = new User($_POST['login']);
 
-            Header('Location:home.php');
+            echo $_SESSION['user']->getLogin();
+            //Header('Location:home.php');
         }
         else $errors['login'] = 'Identifiant ou mot de passe invalide';
     }
