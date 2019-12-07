@@ -14,25 +14,23 @@
 
 <div id="Chemin" class="ml-4"><span class="btn-chemin">Hierarchie</span>/</div>
 
-<div class="ml-4">
-    <div id="Aliments">
+<div class="mr-4 row">
+    <div id="Aliments" class="col">
         <div>
             <ul id="Categories" class=""></ul>
+            <h4 style="color:darkslategray">Recherche par tag:</h4>
+            <?php require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/listesDeroulantes.php'; ?>
+            <button type="button" id="btn-rechercheParTag" class="btn btn-dark">Rechercher</button>
+        </div>
+        <div id="Recettes" class="container">
         </div>
         <div class="mx-auto">
-          Recherche par tag:
-          <?php require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/listesDeroulantes.php'; ?>
-          <button type="button" id="btn-rechercheParTag" class="btn btn-dark">Rechercher</button>
-        </div>
-
-        <div>
           <?php require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/barreDeRecherche.php'; ?>
         </div>
     </div>
-    <br>
 
+    <br>
 </div>
-<div id="Recettes" class="container">
-</div>
+
 </body>
 </html>
