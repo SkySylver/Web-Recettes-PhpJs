@@ -1,6 +1,7 @@
 /*
  * Fonctions liées à la classe Panier
  *
+ * ID de la balise panier :#panier
  */
 
 
@@ -11,6 +12,7 @@
 function AjouterPanier($recette){
     $.post('inc/ajax/modifPanier.php', {methode: "ajouter", id: $recette}, function () {
     });
+    afficherPanier(-1);
 }
 
 /**
@@ -19,10 +21,13 @@ function AjouterPanier($recette){
  */
 function SupprimerPanier($recette){
     $.post('inc/ajax/modifPanier.php', {methode: "supprimer", id: $recette});
+    afficherPanier(-1);
 }
 
-function afficherPanier() {
-    
+function afficherPanier($id) {
+    $.post('inc/ajax/getPanier.php',{id: $id}, function (data) {
+        $('#panier').html(data);
+    });
 }
 
 function MajPanier($div){

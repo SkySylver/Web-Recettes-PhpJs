@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/class/Panier.php';
 const DIR = 'users/';
 class User
 {
@@ -41,12 +42,12 @@ class User
 
 
     function __destruct(){
-        // TODO: Implement __destruct() method.
+        unset($_SESSION['user']);
     }
 
 
     function disconnect(){
-        unset($_SESSION['user']);
+        $_SESSION['panier']->__destruct();
         $this->__destruct();
     }
 
@@ -58,6 +59,8 @@ class User
 
     function login(){
         $_SESSION['user'] = $this;
+        if(!isset($_SESSION['panier'])) $_SESSION['panier'] = new Panier();
+        $_SESSION['panier']->MajFile();
     }
 
 

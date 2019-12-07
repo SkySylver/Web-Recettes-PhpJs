@@ -189,5 +189,5 @@ $(function () {
     $('.trig').change(function () {
         $('.trig').trigger('keyup');
         $('#CP').trigger('keyup');
-    })
+    });
 });

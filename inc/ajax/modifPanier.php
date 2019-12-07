@@ -12,10 +12,12 @@ if(isset($_POST['methode']) && isset($_POST['id'])){
     switch ($_POST['methode']){
         case 'ajouter':
             $_SESSION['panier']->ajouter($id);
+            break;
         case 'supprimer':
+            echo 'supp';
             $_SESSION['panier']->supprimer($id);
+            break;
     }
-    echo json_encode($_SESSION['panier']->_panier);
+    //echo json_encode($_SESSION['panier']->_panier);
 
 }
-else echo '-1';

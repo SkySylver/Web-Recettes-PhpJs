@@ -1,9 +1,8 @@
 <?php
 
 namespace App;
-require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/Donnees.inc.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/class/User.php';
-const dirp = 'panier/';
+require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/Donnees.inc.php';
 class Panier
 {
 
@@ -25,6 +24,15 @@ class Panier
     function MajFile()
     {
         if (isConnected()) {
+            $json = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/Projet/panier/' . $_SESSION['user']->getLogin() . '.json');
+            $usrpan = json_decode($json, true);
+
+            $merged = array_merge($this->_panier, $usrpan);
+            $this->_panier =array_unique($merged);
+
+
+
+
             $json = json_encode($this->_panier);
             file_put_contents($_SERVER["DOCUMENT_ROOT"].'/Projet/panier/' . $_SESSION['user']->getLogin() . '.json', $json);
         }
@@ -58,8 +66,13 @@ class Panier
      */
     function supprimer($r)
     {
+        echo 'test';
         foreach ($this->_panier as $indice => $tmp) {
-            if ($tmp == $r) unset($this->_panier[$r]);
+
+            if ($tmp == $r) {
+                echo ' ok';
+                unset($this->_panier[$indice]);
+            }
         }
         $this->MajFile();
     }
@@ -73,17 +86,20 @@ class Panier
      */
     function afficher($i)
     {
+        require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/Donnees.inc.php';
         if ($this->getTaille() == 0) echo 'Votre panier de recettes est vide...';
-
-        if ($i == -1) foreach ($this->_panier as $r) $this->afficher($r);
-        elseif (isset($this->_panier[$i])) {
-            ?>
+        if ($i == -1) {
+            foreach ($this->_panier as $indice => $r) $this->afficher($indice);
+        }
+        elseif(isset($this->_panier[$i])) {
+        ?>
             <div>
-                <h1><?= $Recettes[$this->_panier[$i]]['titre']; ?></h1>
-                <p>Ingredients : <?= $Recettes[$this->_panier[$i]]['ingredients']; ?></p>
-                <p>Preparation : <?= $Recettes[$this->_panier[$i]]['preparation']; ?></p>
+                <h1><?=$Recettes[$this->_panier[$i]]['titre']; ?></h1>
+                <p>Ingredients : <?=$Recettes[$this->_panier[$i]]['ingredients']; ?></p>
+                <p>Preparation : <?=$Recettes[$this->_panier[$i]]['preparation']; ?></p>
+                <button onclick="SupprimerPanier(<?=$this->_panier[$i] ?>);">Supprimer</button>
             </div>
-            <?php
+        <?php
         }
     }
 }

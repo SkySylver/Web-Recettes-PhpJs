@@ -1,13 +1,12 @@
 <?php
-require $_SERVER["DOCUMENT_ROOT"].'/Projet/class/User.php';
-require $_SERVER["DOCUMENT_ROOT"].'/Projet/class/Panier.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/class/User.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/class/Panier.php';
 session_start();
     use App\User;
     use App\Panier;
     use function App\isConnected;
 
     if(!isset($_SESSION['panier'])) $_SESSION['panier'] = new Panier();
-    $pan = $_SESSION['panier'];
 
 ?>
 
@@ -21,8 +20,11 @@ session_start();
 <?php require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/nav.php'; ?>
 <body>
 
-<?php $pan->afficher(-1); ?>
-<button onclick="AjouterPanier(1);">ffff</button>
+<?php
+$_SESSION['panier']->afficher(-1);
+?>
+
+<button onclick="AjouterPanier(0);">ffff</button>
 </body>
 
 </html>
