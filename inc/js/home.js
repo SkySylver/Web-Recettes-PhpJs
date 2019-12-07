@@ -111,7 +111,9 @@ $(function () {
       suggestions.style.display = "block";
     };
 
-    //Vide la liste de suggestions
+    /**
+    * Vide la liste de suggestions
+    */
     function viderBarre(){
       suggestions.innerHTML='<ul id="suggestions"></ul>';
     }
@@ -198,6 +200,15 @@ $(function () {
         return false;
       });
 
+      //vide la liste des tags
+      $("#viderMust").click(function(){
+        $("#listeMustInclude li").remove();
+      });
+
+      $("#viderMustNot").click(function(){
+        $("#listeMustNotInclude li").remove();
+      });
+
 
       function traiterTag(){
         // On met les tag dans des tableaux
@@ -211,7 +222,6 @@ $(function () {
         for ( var i = 0; i < liMustNot.length; i++ ) {
           arrMustNot.push( liMustNot[ i ].innerHTML );
         }
-        //console.log(arrMust);
 
         $.post('inc/ajax/getRecettesParTag.php',
             {
@@ -223,6 +233,9 @@ $(function () {
       }
 });
 
+/**
+* Enlève les accents de str
+*/
 function RemoveAccents(str) {
   var accents    = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
   var accentsOut = "AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz";
