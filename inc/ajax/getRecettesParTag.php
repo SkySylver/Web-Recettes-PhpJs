@@ -1,6 +1,6 @@
 <?php
     require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/Donnees.inc.php';
-    $MAX = 9; //nb de recettes à afficher max
+    $MAX = 36; //nb de recettes à afficher max
 
 if(isset($_POST['arrMust']) && isset($_POST['arrMustNot'])){
   // Initalisation du tableau des scores
@@ -27,11 +27,14 @@ if(isset($_POST['arrMust']) && isset($_POST['arrMustNot'])){
   }
   arsort($score);
   $i = 1;
+  echo '<div class="row">';
   foreach ($score as $key => $s) {
     if($i>$MAX) break;
     afficherRecette($key, $Recettes);
     $i++;
   }
+  echo '</div>';
+
 }
 
 /**
@@ -97,4 +100,3 @@ function afficherCodeHTML($r,$i){
   </div>
   <?php
 }
-?>
