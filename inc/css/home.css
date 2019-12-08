@@ -64,19 +64,27 @@ p {
 }
 
 #suggestions{
+  position: fixed;
+  width: auto;
   z-index: 2;
   color:dimgray;
   font-size: 8px;
   background-color: white;
 }
 
+#suggestions li:hover {
+    background-color: darkslategray;
+    color: white;
+    cursor: pointer;
+}
+
 .btn-rechercher{
-  width: 102px;
+  width: 122px;
   height: 36px;
   text-align: center;
   font-size: 18px;
   padding: 0px;
-  margin-right: 10px;
+  margin-left: 0px;
   float: right;
 }
 
