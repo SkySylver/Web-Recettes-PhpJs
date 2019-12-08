@@ -52,12 +52,10 @@ class User
 
     function _destruct(){
         unset($_SESSION['user']);
-        echo 'deco';
     }
 
 
     function disconnect(){
-        echo 'disc';
 
         if(isset($_SESSION['panier'])) unset($_SESSION['panier']);
         $this->_destruct();

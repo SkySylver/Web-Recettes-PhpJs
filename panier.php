@@ -14,7 +14,6 @@ session_start();
 <html>
 <head>
 <?php $title='Panier'; require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/header.php'; ?>
-<script src="inc/js/Panier.js" type="text/javascript"></script>
 </head>
 
 <?php require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/nav.php'; ?>

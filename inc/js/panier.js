@@ -29,7 +29,3 @@ function afficherPanier($id) {
         $('#panier').html(data);
     });
 }
-
-function MajPanier($div){
-
-}
