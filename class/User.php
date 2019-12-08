@@ -99,7 +99,7 @@ class User
     }
 
     /**
-     * @return string
+     * @return
      */
     public function getSexe()
     {
@@ -107,7 +107,7 @@ class User
     }
 
     /**
-     * @param string $sexe
+     * @param $sexe
      */
     public function setSexe($sexe)
     {
@@ -115,7 +115,7 @@ class User
     }
 
     /**
-     * @return string
+     * @return
      */
     public function getName()
     {
@@ -123,7 +123,7 @@ class User
     }
 
     /**
-     * @param string $name
+     * @param $name
      */
     public function setName($name)
     {
@@ -131,7 +131,7 @@ class User
     }
 
     /**
-     * @return string
+     * @return
      */
     public function getSurname()
     {
@@ -139,7 +139,7 @@ class User
     }
 
     /**
-     * @param string $surname
+     * @param $surname
      */
     public function setSurname($surname)
     {
@@ -147,7 +147,7 @@ class User
     }
 
     /**
-     * @return string
+     * @return
      */
     public function getMail()
     {
@@ -155,15 +155,15 @@ class User
     }
 
     /**
-     * @param string $mail
+     * @param $mail
      */
-    public function setMail(string $mail)
+    public function setMail($mail)
     {
         $this->_mail = $mail;
     }
 
     /**
-     * @return string
+     * @return
      */
     public function getNaissance()
     {
@@ -171,7 +171,7 @@ class User
     }
 
     /**
-     * @param string $naissance
+     * @param $naissance
      */
     public function setNaissance($naissance)
     {
@@ -179,7 +179,7 @@ class User
     }
 
     /**
-     * @return string
+     * @return
      */
     public function getTel()
     {
@@ -187,7 +187,7 @@ class User
     }
 
     /**
-     * @param string $tel
+     * @param $tel
      */
     public function setTel($tel)
     {
@@ -195,7 +195,7 @@ class User
     }
 
     /**
-     * @return string
+     * @return
      */
     public function getNumber()
     {
@@ -203,7 +203,7 @@ class User
     }
 
     /**
-     * @param string $number
+     * @param $number
      */
     public function setNumber($number)
     {
@@ -211,7 +211,7 @@ class User
     }
 
     /**
-     * @return string
+     * @return
      */
     public function getStreet()
     {
@@ -219,7 +219,7 @@ class User
     }
 
     /**
-     * @param string $street
+     * @param $street
      */
     public function setStreet($street)
     {
@@ -227,7 +227,7 @@ class User
     }
 
     /**
-     * @return string
+     * @return
      */
     public function getCity()
     {
@@ -235,7 +235,7 @@ class User
     }
 
     /**
-     * @param string $city
+     * @param $city
      */
     public function setCity($city)
     {
@@ -243,7 +243,7 @@ class User
     }
 
     /**
-     * @return string
+     * @return
      */
     public function getCP()
     {
@@ -251,7 +251,7 @@ class User
     }
 
     /**
-     * @param string $CP
+     * @param $CP
      */
     public function setCP($CP)
     {

@@ -55,21 +55,22 @@ if(isset($_POST['submit'])) {
         }
     }
 
-    if(empty($_POST['CP'])) unset($_POST['CP']);
-    if(empty($_POST['number'])) unset($_POST['number']);
-    if(empty($_POST['street'])) unset($_POST['steet']);
-    if(empty($_POST['city'])) unset($_POST['city']);
 
-    if(isset($_POST['CP']) || isset($_POST['street']) || isset($_POST['number']) || isset($_POST['city']))
-        if(!(isset($_POST['CP']) && isset($_POST['street']) && isset($_POST['number']) && isset($_POST['city']))){
+
+
+    if(isset($_POST['CP']) && (strlen($_POST['CP']) != 0)) $cp =$_POST['CP'];
+    if(isset($_POST['number']) && (strlen($_POST['number']) != 0)) $number =$_POST['number'];
+    if(isset($_POST['street']) && (strlen($_POST['street']) != 0)) $street =$_POST['street'];
+    if(isset($_POST['city']) && (strlen($_POST['city']) != 0)) $city =$_POST['city'];
+
+    if(isset($cp) || isset($street) || isset($number) || isset($city)) {
+        if (!isset($cp) || !isset($street) || !isset($number) || !isset($city)) {
             $errors['Adress'] = 'Veuillez saisir une adresse complete';
-        }
-
-        elseif (!preg_match('/[0-9]*/',$_POST['number'])) $errors['number'] = 'Le numero de rue doit correspondre a un nombre';
-        elseif (!preg_match('/[0-9]*/',$_POST['CP'])) $errors['CP'] = 'Le code postal doit correspondre a un nombre';
-        elseif (!preg_match('/[a-zA-Z ]*/',$_POST['city'])) $errors['city'] = 'La ville doit correspondre a des lettres';
-        elseif (!preg_match('/[a-zA-Z ]*/',$_POST['street'])) $errors['street'] = 'Le nom de rue doit correspondre a des lettres';
-
+        } elseif (!preg_match('/[0-9]*/', $number)) $errors['number'] = 'Le numero de rue doit correspondre a un nombre';
+        elseif (!preg_match('/[0-9]*/', $cp)) $errors['CP'] = 'Le code postal doit correspondre a un nombre';
+        elseif (!preg_match('/[a-zA-Z ]*/', $city)) $errors['city'] = 'La ville doit correspondre a des lettres';
+        elseif (!preg_match('/[a-zA-Z ]*/', $street)) $errors['street'] = 'Le nom de rue doit correspondre a des lettres';
+    }
 
     if(isset($_POST['tel'])) {
         if(empty($_POST['tel'])) unset($_POST['tel']);
@@ -195,24 +196,30 @@ if(isset($_POST['submit'])) {
             <div class="form-group col-2">
                 <label>Rue :</label>
                 <input class="trig form-control<?php
-                if(isset($errors['Adress'])) echo ' is-invalid"';
-                elseif (isset($_POST['street'])) echo ' is-valid"';
+                if(isset($errors['Adress'])) echo ' is-invalid';
+                elseif (isset($_POST['street'])) echo ' is-valid';
+
+                echo '"';
                 if(isset($_POST['street'])) echo 'value="' .$_POST['street'] .'"';
                 ?> id="street" type="text" name="street"/>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback"></div>
             </div>
 
-            <div class="trig form-group col-2">
+            <div class="form-group col-2">
                 <label>Code postal :</label>
                 <input class="trig form-control<?php
-                if(isset($errors['Adress'])) echo ' is-invalid"';
-                elseif (isset($_POST['CP'])) echo ' is-valid"';
+                if(isset($errors['Adress'])) echo ' is-invalid';
+                elseif (isset($_POST['CP'])) echo ' is-valid';
+                echo '"';
+
                 if(isset($_POST['CP'])) echo 'value="' .$_POST['CP'] .'"';
                 ?> id="CP" type="text" name="CP"/>
             </div>
 
-            <div class="trig form-group col-2">
+            <div class="form-group col-2">
                 <label>Ville :</label>
-                <input class="form-control<?php
+                <input class="trig form-control<?php
                 if(isset($errors['Adress'])) echo ' is-invalid"';
                 elseif (isset($_POST['city'])) echo ' is-valid"';
                 if(isset($_POST['city'])) echo 'value="' .$_POST['city'] .'"';

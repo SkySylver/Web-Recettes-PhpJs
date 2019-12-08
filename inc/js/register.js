@@ -122,7 +122,7 @@ $(function () {
      * Vérification du numéro de rue
      */
     $('#number').keyup(function () {
-        if (/^[0-9]+$/.test(this.value)) validate(this);
+        if ((/^[0-9]+$/).test(this.value)) validate(this);
         else if (/^$/.test(this.value)) neutralize(this);
         else disable(this);
 
@@ -132,8 +132,7 @@ $(function () {
      * Vérification du nom de la rue
      */
     $('#street').keyup(function () {
-        console.log('test');
-        if (/^[a-zA-Z]+$/.test(this.value)) validate(this);
+        if ((/^[a-zA-Z ]+$/).test(this.value)) validate(this);
         else if (/^$/.test(this.value)) neutralize(this);
         else disable(this);
     });
@@ -142,7 +141,7 @@ $(function () {
      * Vérification du code postal
      */
     $('#CP').keyup(function () {
-        if (/^[0-9]{5}$/.test(this.value)) validate(this);
+        if ((/^[0-9]+$/).test(this.value)) validate(this);
         else if (/^$/.test(this.value)) neutralize(this);
         else disable(this);
 
@@ -152,7 +151,7 @@ $(function () {
      * Vérification du nom de la vile
      */
     $('#city').keyup(function () {
-        if (/^[a-zA-Z ]*$/.test(this.value)) validate(this);
+        if ((/^[a-zA-Z ]*$/).test(this.value)) validate(this);
         else if (/^$/.test(this.value)) neutralize(this);
         else disable(this);
     });
@@ -181,13 +180,10 @@ $(function () {
             disable($('#submit'));
             $('#submit').siblings('.invalid-feedback').text('Veuillez correctement compléter les champs invalides.');
             e.preventDefault();
-        } else {
-
         }
     });
 
     $('.trig').change(function () {
         $('.trig').trigger('keyup');
-        $('#CP').trigger('keyup');
     });
 });

@@ -20,3 +20,9 @@ li:hover {
     color: white;
     cursor: pointer;
 }
+.erreurs, .erreurs li, .erreurs li:hover{
+    background-color: transparent;
+    color: red;
+    cursor:default;
+    border-radius: 0px;
+}
