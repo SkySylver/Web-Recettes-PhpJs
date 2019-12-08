@@ -76,7 +76,7 @@ function traiterIngredients($ing, $Recettes){
 function afficherCodeHTML($r, $i){
   $newTitre = str_replace(' ', '_', $r['titre']) .'.jpg';
   ?>
-  <div class="border border-primary rounded px-1 text-center offset-md-1 col-3 mr-auto recette">
+  <div class="recette border-top border-primary">
       <p class="h3"><?=$r['titre'];?></p>
       <p class="p">Ingredients : <?=$r['ingredients']; ?></p>
       <p>Preparation : <?=$r['preparation']; ?></p>
