@@ -21,8 +21,11 @@ if (!isset($_SESSION['panier'])) $_SESSION['panier'] = new Panier();
 
 <?php require $_SERVER["DOCUMENT_ROOT"] . '/Projet/inc/php/nav.php'; ?>
 <body>
-<div id="panier">
+<div class="container">
+
+<div id="panier" class="row">
     <?php $_SESSION['panier']->afficher(-1); ?>
+</div>
 </div>
 </body>
 </html>

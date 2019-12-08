@@ -86,7 +86,7 @@ function afficherRecette($recette, $Recettes){
 function afficherCodeHTML($r,$i){
   $newTitre = str_replace(' ', '_', $r['titre']) .'.jpg';
   ?>
-  <div class="recette border-top border-primary">
+  <div class="recette col-sm-12 border-top border-primary">
       <p class="h3"><?=$r['titre'];?></p>
       <p class="p">Ingredients : <?=$r['ingredients']; ?></p>
       <p>Preparation : <?=$r['preparation']; ?></p>

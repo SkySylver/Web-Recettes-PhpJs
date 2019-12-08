@@ -99,13 +99,14 @@ class Panier
         if ($this->getTaille() == 0) echo 'Votre panier de recettes est vide...';
         if ($i == -1) {
             foreach ($this->_panier as $indice => $r) $this->afficher($indice);
+
         } elseif (isset($this->_panier[$i])) {
             ?>
-            <div>
+            <div class="col-sm-12 border-bottom border-primary">
                 <h1><?= $Recettes[$this->_panier[$i]]['titre']; ?></h1>
                 <p>Ingredients : <?= $Recettes[$this->_panier[$i]]['ingredients']; ?></p>
                 <p>Preparation : <?= $Recettes[$this->_panier[$i]]['preparation']; ?></p>
-                <button onclick="SupprimerPanier(<?= $this->_panier[$i] ?>);">Supprimer</button>
+                <button class="btn btn-primary my-2" onclick="SupprimerPanier(<?= $this->_panier[$i] ?>);">Supprimer</button>
             </div>
             <?php
         }
