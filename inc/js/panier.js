@@ -24,6 +24,11 @@ function SupprimerPanier($recette){
     afficherPanier(-1);
 }
 
+/**
+ *
+ * @param $id : Recette a afficher
+ * Si $id == -1 : affiche tout le panier
+ */
 function afficherPanier($id) {
     $.post('inc/ajax/getPanier.php',{id: $id}, function (data) {
         $('#panier').html(data);

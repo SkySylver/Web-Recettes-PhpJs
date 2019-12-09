@@ -4,6 +4,9 @@ use App\User;
 session_start();
 if(\App\isConnected()) Header('Location:home.php');
 
+/**
+ * Vérifications Login
+ */
 if(isset($_POST['submit'])){
     if(isset($_POST['login']) && isset($_POST['password'])) {
         if(App\existUser($_POST['login'], $_POST['password'])){

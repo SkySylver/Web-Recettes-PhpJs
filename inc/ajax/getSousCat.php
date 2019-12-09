@@ -1,4 +1,6 @@
 <?php
+// Retourne sous catégorie d'une catégorie cliqué dans la hierarchie
+
 require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/Donnees.inc.php';
 
 

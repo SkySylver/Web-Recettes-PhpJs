@@ -1,4 +1,6 @@
 <?php
+//Modifie le panier : ajoute ou supprime une recette dans le panier
+
 require_once $_SERVER["DOCUMENT_ROOT"].'/Projet/class/Panier.php';
 
 

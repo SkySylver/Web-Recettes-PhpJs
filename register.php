@@ -11,6 +11,7 @@ if (isConnected()) header('Location:home.php');
  * Vérifications PHP
 */
 if(isset($_POST['submit'])) {
+    //Login
     if (!isset($_POST['login']) || !preg_match('/[a-zA-Z0-9]{3,29}/', $_POST['login'])) {
         $errors['login'] = 'Veuillez saisir un Login valide.';
     } elseif (file_exists('users/' .$_POST['login'] .'.json'))//!Existe
@@ -24,26 +25,31 @@ if(isset($_POST['submit'])) {
     }
     elseif (!isset($_POST['confirm_password']) || ($_POST['confirm_password'] != $_POST['password'])) $errors['confirm_password'] = 'Veuillez ressaisir le même mot de passe';
 
+    //Nom
     if (isset($_POST['name'])) {
         if (empty($_POST['name'])) unset($_POST['name']);
         elseif (!preg_match('/^[a-zA-ZàáâäãčćèéêëėìíîïńòóôöõùúûüūÿýżźñçčšžÀÁÂÄÃÅĆČĖÈÉÊËÌÍÎÏŃÒÓÔÖÕÙÚÛÜŪŸÝŻŹÑÇŒÆČŠŽ]*$/', $_POST['name'])) $errors['name'] = 'Les caractères spéciaux ne sont pas autorisés.';
     }
 
+    //Prénom
     if (isset($_POST['surname'])) {
         if (empty($_POST[''])) unset($_POST['surname']);
         elseif (!preg_match('/^[a-zA-ZàáâäãčćèéêëėìíîïńòóôöõùúûüūÿýżźñçčšžÀÁÂÄÃÅĆČĖÈÉÊËÌÍÎÏŃÒÓÔÖÕÙÚÛÜŪŸÝŻŹÑÇŒÆČŠŽ]*$/', $_POST['surname'])) $errors['surname'] = 'Les caractères spéciaux ne sont pas autorisés.';
     }
 
+    //Email
     if (isset($_POST['mail'])) {
         if (trim($_POST['mail']) == '') unset($_POST['mail']);
         elseif (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) $errors['mail'] = 'Veuillez saisir une adresse Email valide';
     }
 
+    //Genre
     if (isset($_POST['sexe'])){
         if(empty($_POST['sexe'])) unset($_POST['sexe']);
         elseif (($_POST['sexe'] != 'Monsieur') && ($_POST['sexe'] != 'Madame')) $errors['sexe'] = 'Genre invalide';
     }
 
+    //Date de naissance
     if (isset($_POST['naissance'])) {
         if(empty($_POST['naissance'])) unset($_POST['naissance']);
         elseif (!preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $_POST["naissance"])) {
@@ -55,9 +61,7 @@ if(isset($_POST['submit'])) {
         }
     }
 
-
-
-
+    // Adresse
     if(isset($_POST['CP']) && (strlen($_POST['CP']) != 0)) $cp =$_POST['CP'];
     if(isset($_POST['number']) && (strlen($_POST['number']) != 0)) $number =$_POST['number'];
     if(isset($_POST['street']) && (strlen($_POST['street']) != 0)) $street =$_POST['street'];
@@ -72,12 +76,13 @@ if(isset($_POST['submit'])) {
         elseif (!preg_match('/[a-zA-Z ]*/', $street)) $errors['street'] = 'Le nom de rue doit correspondre a des lettres';
     }
 
+    // Téléphone
     if(isset($_POST['tel'])) {
         if(empty($_POST['tel'])) unset($_POST['tel']);
         elseif(!preg_match('/[0-9]{10}/', $_POST['tel'])) $errors['tel'] = 'Veuillez saisir un numéro de téléphone valide';
     }
 
-
+    //Enregistrement si tout est valide
     if(!isset($errors)){
         $usr = new User($_POST['login'], $_POST['password']);
 

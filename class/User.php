@@ -185,7 +185,7 @@ class User
     }
 
     /**
-     * @return Date de naissance
+     * @return Date de naissance de User
      */
     public function getNaissance()
     {
@@ -193,7 +193,7 @@ class User
     }
 
     /**
-     * @param $naissance : Nouvelle date de naissance
+     * @param $naissance : Nouvelle date de naissance de User
      */
     public function setNaissance($naissance)
     {
@@ -201,7 +201,7 @@ class User
     }
 
     /**
-     * @return
+     * @return Téléphone de User
      */
     public function getTel()
     {
@@ -209,7 +209,7 @@ class User
     }
 
     /**
-     * @param $tel
+     * @param $tel : Nouveau numéro de téléphone de User
      */
     public function setTel($tel)
     {
@@ -217,7 +217,7 @@ class User
     }
 
     /**
-     * @return
+     * @return Numéro de rue de User
      */
     public function getNumber()
     {
@@ -225,7 +225,7 @@ class User
     }
 
     /**
-     * @param $number
+     * @param $number : Nouveau numéro de rue de User
      */
     public function setNumber($number)
     {
@@ -233,7 +233,7 @@ class User
     }
 
     /**
-     * @return
+     * @return Nom de la rue de User
      */
     public function getStreet()
     {
@@ -241,7 +241,7 @@ class User
     }
 
     /**
-     * @param $street
+     * @param $street : Nouvelle rue de User
      */
     public function setStreet($street)
     {
@@ -249,7 +249,7 @@ class User
     }
 
     /**
-     * @return
+     * @return Ville de User
      */
     public function getCity()
     {
@@ -257,7 +257,7 @@ class User
     }
 
     /**
-     * @param $city
+     * @param $city : Nouvelle ville de User
      */
     public function setCity($city)
     {
@@ -265,7 +265,7 @@ class User
     }
 
     /**
-     * @return
+     * @return Code Postal de User
      */
     public function getCP()
     {
@@ -273,7 +273,7 @@ class User
     }
 
     /**
-     * @param $CP
+     * @param $CP : Nouveau code postal de User
      */
     public function setCP($CP)
     {
@@ -281,7 +281,12 @@ class User
     }
 }
 
-
+/**
+ * Vérifie l'existence d'un User avec son login et mot de passe
+ * @param $login : Login
+ * @param $password : Mot de passe clair a vérifié
+ * @return bool : Si l'utilisateur n'existe pas ou mot de passe invalide : retourne faux
+ */
 function existUser($login, $password){
 
     $path = 'users/' .$login .'.json';
@@ -294,6 +299,9 @@ function existUser($login, $password){
     else return false;
 }
 
+/**
+ * @return bool : retourne vrai si User est connecté
+ */
 function isConnected(){
     if (session_status() == PHP_SESSION_NONE) return false;
     if (isset($_SESSION['user'])) return true;
