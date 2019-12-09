@@ -6,11 +6,21 @@ use App\Panier;
 const DIR = 'users/';
 class User
 {
+
     private $_login;
     private $_password;
     private $_name='', $_surname='', $_mail='', $_naissance='', $_tel='', $_number='', $_street='', $_city='', $_CP='', $_sexe ='';
 
 
+    /**
+     * Constructeur
+     *  Si nombre argument = 1
+     *      Charge un utilisateur a partir de son fichier utilisateur.json
+     *
+     *  Si nombre argument = 2
+     *      Construit un utilisateur avec login et mot de passe (haché)
+     *
+     */
     public function __construct(){
 
         $cpt = func_num_args();
@@ -49,24 +59,36 @@ class User
     }
 
 
-
+    /**
+     * Destructeur
+     */
     function _destruct(){
         unset($_SESSION['user']);
     }
 
-
+    /**
+     * Déconnecte l'utilisateur et vide la session
+     */
     function disconnect(){
 
         if(isset($_SESSION['panier'])) unset($_SESSION['panier']);
         $this->_destruct();
     }
 
+    /**
+     * Sauvegarde/met à jour les données de l'utilisateur
+     * Et le charge dans la session
+     */
     function register(){
         $json = json_encode(array('login' => $this->_login, 'password' => $this->_password, 'name' => $this->_name, 'surname' => $this->_surname, 'sexe' => $this->_sexe, 'mail' => $this->_mail,'naissance' => $this->_naissance, 'tel' => $this->_tel, 'number' => $this->_number, 'street' => $this->_street, 'city' => $this->_city, 'CP' => $this->_CP));
         file_put_contents(DIR .$this->_login .'.json', $json);
         $this->login();
     }
 
+    /**
+     * Met User dans la sessions $_SESSION['user']
+     * Et charge le panier de celui-ci + Le met a jour
+     */
     function login(){
         $_SESSION['user'] = $this;
         if(!isset($_SESSION['panier'])) $_SESSION['panier'] = new Panier();
@@ -75,7 +97,7 @@ class User
 
 
     /**
-     * @return mixed
+     * @return Login de l'utilisateur
      */
     public function getLogin()
     {
@@ -83,7 +105,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return Le mot de passe chiffré de l'utilisateur
      */
     public function getPassword()
     {
@@ -91,7 +113,7 @@ class User
     }
 
     /**
-     * @param mixed $password
+     * @param $password : Nouveau mot de passe chiffré
      */
     public function setPassword($password)
     {
@@ -99,7 +121,7 @@ class User
     }
 
     /**
-     * @return
+     * @return Genre de User
      */
     public function getSexe()
     {
@@ -107,7 +129,7 @@ class User
     }
 
     /**
-     * @param $sexe
+     * @param $sexe : Nouveau genre de la personne
      */
     public function setSexe($sexe)
     {
@@ -115,7 +137,7 @@ class User
     }
 
     /**
-     * @return
+     * @return Nom de la personne
      */
     public function getName()
     {
@@ -123,7 +145,7 @@ class User
     }
 
     /**
-     * @param $name
+     * @param $name : Nouveau nom de l'utilisateur
      */
     public function setName($name)
     {
@@ -131,7 +153,7 @@ class User
     }
 
     /**
-     * @return
+     * @return Prénom de User
      */
     public function getSurname()
     {
@@ -139,7 +161,7 @@ class User
     }
 
     /**
-     * @param $surname
+     * @param $surname : Nouveau prénom
      */
     public function setSurname($surname)
     {
@@ -147,7 +169,7 @@ class User
     }
 
     /**
-     * @return
+     * @return Email de User
      */
     public function getMail()
     {
@@ -155,7 +177,7 @@ class User
     }
 
     /**
-     * @param $mail
+     * @param $mail : Nouvelle adresse mail de User
      */
     public function setMail($mail)
     {
@@ -163,7 +185,7 @@ class User
     }
 
     /**
-     * @return
+     * @return Date de naissance
      */
     public function getNaissance()
     {
@@ -171,7 +193,7 @@ class User
     }
 
     /**
-     * @param $naissance
+     * @param $naissance : Nouvelle date de naissance
      */
     public function setNaissance($naissance)
     {

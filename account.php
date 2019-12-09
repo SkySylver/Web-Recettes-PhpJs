@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <?php $title = 'Login';
+    <?php $title = 'Espace membre';
     require $_SERVER["DOCUMENT_ROOT"] . '/Projet/inc/php/header.php'; ?>
 </head>
 <body>

@@ -16,9 +16,7 @@ class Panier
     /**
      * Constructeur par défaut
      */
-    public function __construct()
-    {
-    }
+    public function __construct(){}
 
 
     /**
@@ -54,11 +52,10 @@ class Panier
 
 
     /**
-     * @param $r : Recette à ajouter au panier
+     * @param $r : Indice de la Recette à ajouter au panier
      */
     function ajouter($r)
     {
-
         if (!in_array($r, $this->_panier)) array_push($this->_panier, $r);
         $this->MajFile();
     }
