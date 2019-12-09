@@ -26,7 +26,7 @@
 		</div>
 		<div class="col-sm-8">
       <br>
-      <div class="row-1 offset-8">
+      <div class="row-1 offset-6">
 			     <?php require $_SERVER["DOCUMENT_ROOT"].'/Projet/inc/php/barreDeRecherche.php'; ?>
 		  </div>
       <br>
