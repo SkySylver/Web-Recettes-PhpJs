@@ -68,7 +68,7 @@ p {
   width: auto;
   z-index: 2;
   color:dimgray;
-  font-size: 8px;
+  
   background-color: white;
 }
 
@@ -79,8 +79,6 @@ p {
 }
 
 .btn-rechercher{
-  width: 122px;
-  height: 36px;
   text-align: center;
   font-size: 18px;
   padding: 0px;
